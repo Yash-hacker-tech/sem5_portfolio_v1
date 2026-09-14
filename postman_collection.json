@@ -1,0 +1,215 @@
+{
+  "info": {
+    "name": "Portfolio Backend API — CS1303 Assignment 2",
+    "description": "Covers all backend endpoints B1–B7 including success and failure cases.\nBase URL: http://localhost:5000",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "B1 — GET /api/projects (List all)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/projects",
+          "host": ["{{base_url}}"],
+          "path": ["api", "projects"]
+        },
+        "description": "Returns the full array of all projects. Expected: 200 OK with JSON array."
+      },
+      "response": []
+    },
+    {
+      "name": "B2 — GET /api/projects/:id (Success — algoviz)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/projects/algoviz",
+          "host": ["{{base_url}}"],
+          "path": ["api", "projects", "algoviz"]
+        },
+        "description": "Returns a single project by ID. Expected: 200 OK with project object."
+      },
+      "response": []
+    },
+    {
+      "name": "B2 — GET /api/projects/:id (Success — TimeTrix)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/projects/TimeTrix",
+          "host": ["{{base_url}}"],
+          "path": ["api", "projects", "TimeTrix"]
+        },
+        "description": "Returns TimeTrix project. Expected: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "B2 — GET /api/projects/:id (Success — cptracker)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/projects/cptracker",
+          "host": ["{{base_url}}"],
+          "path": ["api", "projects", "cptracker"]
+        },
+        "description": "Returns CP Tracker project. Expected: 200 OK."
+      },
+      "response": []
+    },
+    {
+      "name": "B2 — GET /api/projects/:id (FAIL — invalid id)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/projects/doesnotexist",
+          "host": ["{{base_url}}"],
+          "path": ["api", "projects", "doesnotexist"]
+        },
+        "description": "FAILURE CASE: Invalid project ID. Expected: 404 { \"error\": \"Project not found.\" }"
+      },
+      "response": []
+    },
+    {
+      "name": "B3 — POST /api/contact (Success)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"message\": \"Hello, I really loved your portfolio! Would love to collaborate.\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/contact",
+          "host": ["{{base_url}}"],
+          "path": ["api", "contact"]
+        },
+        "description": "Valid contact form submission. Expected: 200 OK { ok: true, message: '...' }"
+      },
+      "response": []
+    },
+    {
+      "name": "B4/B7 — POST /api/contact (FAIL — missing name)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"\",\n  \"email\": \"jane@example.com\",\n  \"message\": \"Hello there, this is a valid message.\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/contact",
+          "host": ["{{base_url}}"],
+          "path": ["api", "contact"]
+        },
+        "description": "FAILURE CASE: Empty name. Expected: 400 { \"error\": \"Name is required.\" }"
+      },
+      "response": []
+    },
+    {
+      "name": "B5/B7 — POST /api/contact (FAIL — missing email)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"\",\n  \"message\": \"Hello there, this is a valid message.\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/contact",
+          "host": ["{{base_url}}"],
+          "path": ["api", "contact"]
+        },
+        "description": "FAILURE CASE: Empty email. Expected: 400 { \"error\": \"Email is required.\" }"
+      },
+      "response": []
+    },
+    {
+      "name": "B6/B7 — POST /api/contact (FAIL — invalid email format)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"not-an-email\",\n  \"message\": \"Hello there, this is a valid message.\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/contact",
+          "host": ["{{base_url}}"],
+          "path": ["api", "contact"]
+        },
+        "description": "FAILURE CASE: Malformed email. Expected: 400 { \"error\": \"Enter a valid email address.\" }"
+      },
+      "response": []
+    },
+    {
+      "name": "B7 — POST /api/contact (FAIL — message too short)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Jane Doe\",\n  \"email\": \"jane@example.com\",\n  \"message\": \"Hi\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/contact",
+          "host": ["{{base_url}}"],
+          "path": ["api", "contact"]
+        },
+        "description": "FAILURE CASE: Message shorter than 10 characters. Expected: 400 { \"error\": \"Message must be at least 10 characters.\" }"
+      },
+      "response": []
+    },
+    {
+      "name": "B7 — GET unknown route (404 fallback)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/unknown",
+          "host": ["{{base_url}}"],
+          "path": ["api", "unknown"]
+        },
+        "description": "FAILURE CASE: Any unmatched route. Expected: 404 { \"error\": \"Route not found.\" }"
+      },
+      "response": []
+    }
+  ]
+}
