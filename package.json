@@ -1,0 +1,26 @@
+{
+  "name": "portfolio-assignment2",
+  "version": "1.0.0",
+  "description": "NIT Warangal · Department of Computer Science & Engineering   **Student:** Yash Sanghi | **GitHub:** [Yash-hacker-tech](https://github.com/Yash-hacker-tech)   **Repo:** https://github.com/Yash-hacker-tech/sem5_portfolio_v1",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently --kill-others --names \"BACKEND,FRONTEND\" --prefix-colors \"red,cyan\" \"npm start --prefix backend\" \"npm start --prefix portfolio\"",
+    "backend": "npm start --prefix backend",
+    "frontend": "npm start --prefix portfolio",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yash-hacker-tech/sem5_portfolio_v1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yash-hacker-tech/sem5_portfolio_v1/issues"
+  },
+  "homepage": "https://github.com/Yash-hacker-tech/sem5_portfolio_v1#readme",
+  "devDependencies": {
+    "concurrently": "^10.0.5"
+  }
+}
