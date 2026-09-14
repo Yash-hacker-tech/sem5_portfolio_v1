@@ -1,0 +1,96 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+
+3) 
+
+
+
+# later work
+
+const projects = [
+  {
+    id: "devlink",
+    title: "DevLink — Developer Networking Platform",
+    description:
+      "A full-stack platform where developers can create profiles, post projects, and connect with collaborators. Features JWT authentication, real-time notifications, and a recommendation engine based on tech stack overlap.",
+    techStack: ["React", "Node.js", "MongoDB", "Socket.io", "JWT"],
+    image: null,
+    link: "https://github.com/Yash-hacker-tech/devlink",
+    longDescription:
+      "DevLink was built to solve the problem of finding like-minded collaborators for side projects. The backend exposes a REST API built with Express, backed by MongoDB for flexible schema design. The frontend uses React with Context API for auth state. Real-time notifications are powered by Socket.io rooms scoped to each user. The recommendation engine scores potential collaborators by counting tech-stack intersections weighted by project recency.",
+    challenges:
+      "Implementing real-time notifications efficiently without overwhelming the server required careful Socket.io room management and debouncing on the client side.",
+    outcome:
+      "Deployed on Render (backend) and Vercel (frontend). Used by 50+ developers in the NIT Warangal community during beta.",
+  },
+  {
+    id: "algoviz",
+    title: "AlgoViz — Algorithm Visualizer",
+    description:
+      "An interactive browser-based tool that animates sorting and graph traversal algorithms step-by-step. Supports Bubble Sort, Quick Sort, Merge Sort, BFS, and DFS with adjustable speed controls.",
+    techStack: ["JavaScript", "HTML5 Canvas", "CSS3", "Vanilla JS"],
+    image: null,
+    link: "https://github.com/Yash-hacker-tech/algoviz",
+    longDescription:
+      "AlgoViz renders animations frame-by-frame on an HTML5 Canvas element. Each algorithm is implemented as a generator function, yielding intermediate states that the animation loop consumes. Speed is controlled by adjusting the interval between frames. Graph traversal modes display an adjacency-list representation alongside the canvas.",
+    challenges:
+      "Synchronising the generator-based algorithm state with requestAnimationFrame without causing visual artifacts required a dedicated scheduler layer.",
+    outcome:
+      "Used as a teaching aid in the DSA lab sessions. Received commendation from the department faculty for clarity of visualization.",
+  },
+  {
+    id: "smartnotes",
+    title: "SmartNotes — AI-Powered Study Assistant",
+    description:
+      "A note-taking web app that uses the Gemini API to summarise uploaded PDFs, generate quiz questions from notes, and suggest related topics. Built during a 48-hour hackathon.",
+    techStack: ["React", "Python", "FastAPI", "Gemini API", "PostgreSQL"],
+    image: null,
+    link: "https://github.com/Yash-hacker-tech/smartnotes",
+    longDescription:
+      "SmartNotes was the winning project at CodeSprint 2025 at NIT Warangal. The FastAPI backend handles PDF parsing (via PyMuPDF), chunks text into context windows, and calls the Gemini API for summarisation and quiz generation. Notes are stored in PostgreSQL with full-text search enabled via pg_trgm.",
+    challenges:
+      "Chunking long PDFs without losing cross-paragraph context required a sliding-window approach with 20% overlap between consecutive chunks.",
+    outcome:
+      "Won 1st place at CodeSprint 2025. Currently being extended with spaced-repetition scheduling for quiz review.",
+  },
+  {
+    id: "cptracker",
+    title: "CP Tracker — Competitive Programming Dashboard",
+    description:
+      "A personal dashboard that aggregates problem-solving stats from Codeforces, LeetCode, and CodeChef into a single view with streak tracking, rating graphs, and topic-wise breakdown.",
+    techStack: ["React", "Node.js", "Chart.js", "REST APIs", "Express"],
+    image: null,
+    link: "https://github.com/Yash-hacker-tech/cp-tracker",
+    longDescription:
+      "CP Tracker polls the public APIs of Codeforces and LeetCode on a schedule and caches responses in a lightweight SQLite database to stay within rate limits. The frontend renders rating history as line charts using Chart.js and shows a GitHub-style contribution heatmap for daily solve streaks.",
+    challenges:
+      "LeetCode does not expose an official public API, so the tracker uses a reverse-engineered GraphQL endpoint, which required careful error handling for schema changes.",
+    outcome:
+      "Personal productivity tool used daily. Helped maintain a 90-day solve streak leading up to campus placements.",
+  },
+];
+
+export default projects;
