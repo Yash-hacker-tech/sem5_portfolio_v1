@@ -1,4 +1,4 @@
-const express = require("express");
+ï»¿const express = require("express");
 const cors    = require("cors");
 
 const projects = require("./data/projects");
@@ -7,17 +7,17 @@ const app  = express();
 const PORT = process.env.PORT || 5000;
 
 // -- Middleware ----------------------------------------------------------------
-app.use(cors({ origin: "http://localhost:3000" })); // allow CRA dev server
+app.use(cors()); // allow CRA dev server
 app.use(express.json());
 
 // -- Routes --------------------------------------------------------------------
 
-// GET /api/projects — return all projects
+// GET /api/projects â€” return all projects
 app.get("/api/projects", (req, res) => {
   res.json(projects);
 });
 
-// GET /api/projects/:id — return a single project
+// GET /api/projects/:id â€” return a single project
 app.get("/api/projects/:id", (req, res) => {
   const project = projects.find((p) => p.id === req.params.id);
   if (!project) {
@@ -26,7 +26,7 @@ app.get("/api/projects/:id", (req, res) => {
   res.json(project);
 });
 
-// POST /api/contact — receive contact form submission
+// POST /api/contact â€” receive contact form submission
 app.post("/api/contact", (req, res) => {
   const { name, email, message } = req.body;
 
